@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), sans-serif;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-noir-olive text-white px-8 py-3 rounded-full font-medium hover:bg-noir-brown transition-colors duration-300;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-noir-olive text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-olive hover:text-white transition-all duration-300;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Gentle float animation */
+  @keyframes nw-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Soft glow pulse for premium backlit feel */
+  @keyframes nw-glow {
+    0%, 100% {
+      text-shadow:
+        0 0 0 rgba(83,84,66,0),
+        0 0 0 rgba(206,196,160,0);
+    }
+    50% {
+      text-shadow:
+        0 8px 30px rgba(83,84,66,0.25),
+        0 0 22px rgba(206,196,160,0.45);
+    }
+  }
+
+  .animate-nw-float {
+    animation: nw-float 8s ease-in-out infinite;
+  }
+
+  .animate-nw-glow {
+    animation: nw-glow 6s ease-in-out infinite;
+  }
+}
