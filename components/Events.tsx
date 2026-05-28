@@ -1,9 +1,27 @@
 "use client"
 
-import { Calendar, Clock, MapPin, Users, ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { Calendar, Clock, MapPin, Users, ArrowRight, Mail } from "lucide-react"
 import EventsComingSoon from "./EventsComingSoon"
 
 export default function Events() {
+  // Featured upcoming event
+  const featuredEvent = {
+    title: "Private After-Work Business Mixer",
+    date: "Thursday, June 18, 2025",
+    time: "6:00 PM - 8:00 PM",
+    location: "Noir Well Health, 412 Evergreen Avenue, First Floor, Brooklyn, NY 11221",
+    description:
+      "Join us for an exclusive after-work mixer for business owners to learn about the Essential Plan 200-250 Elimination and what it means for you as an employer and for your employees. Enjoy one-to-one conversations with financial planners, advisors, and experts at this event.",
+    speakers: [
+      { name: "Ms. Tania Tavira", role: "Financial Planner, Prudential Financial Advisors" },
+      { name: "Mr. Kenneth Marable", role: "Financial Planner, Prudential Financial Advisors" },
+    ],
+    flyerImage:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/902C9919-020C-4123-90B3-78F095C5A1EA-ug1iIlInkhGHBXIn7nhaSDQoPsPOum.jpeg",
+    rsvpEmail: "info@noirwellhealth.com",
+  }
+
   const upcomingEvents = [
     {
       title: "Women's Wellness Workshop",
@@ -67,6 +85,79 @@ export default function Events() {
 
         {/* Coming Soon Notice */}
         <EventsComingSoon />
+
+        {/* Featured Upcoming Event */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-noir-brown mb-8 text-center">Featured Upcoming Event</h3>
+          <div className="bg-white rounded-2xl border border-noir-beige/50 shadow-xl overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Flyer Image */}
+              <div className="relative">
+                <Image
+                  src={featuredEvent.flyerImage}
+                  alt={`${featuredEvent.title} - Event Flyer`}
+                  width={600}
+                  height={900}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+
+              {/* Event Details */}
+              <div className="p-8 lg:p-10 flex flex-col justify-center">
+                <span className="inline-flex items-center bg-noir-olive text-white px-4 py-1.5 rounded-full text-sm font-medium w-fit mb-4">
+                  Upcoming Event
+                </span>
+
+                <h4 className="text-2xl md:text-3xl font-bold text-noir-brown mb-4">{featuredEvent.title}</h4>
+
+                <p className="text-noir-mauve mb-6 leading-relaxed">{featuredEvent.description}</p>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-noir-brown">
+                    <Calendar className="h-5 w-5 mr-3 text-noir-olive" />
+                    <span className="font-medium">{featuredEvent.date}</span>
+                  </div>
+                  <div className="flex items-center text-noir-brown">
+                    <Clock className="h-5 w-5 mr-3 text-noir-olive" />
+                    <span>{featuredEvent.time}</span>
+                  </div>
+                  <div className="flex items-start text-noir-brown">
+                    <MapPin className="h-5 w-5 mr-3 mt-0.5 text-noir-olive flex-shrink-0" />
+                    <span>{featuredEvent.location}</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <p className="text-sm font-medium text-noir-brown mb-2">Guest Speakers:</p>
+                  <ul className="space-y-1">
+                    {featuredEvent.speakers.map((speaker, idx) => (
+                      <li key={idx} className="text-sm text-noir-mauve">
+                        <span className="font-medium text-noir-brown">{speaker.name}</span> - {speaker.role}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-noir-cream/50 rounded-xl p-4">
+                  <p className="text-noir-brown font-medium mb-2 flex items-center">
+                    <Mail className="h-4 w-4 mr-2 text-noir-olive" />
+                    Reserve Your Spot Today!
+                  </p>
+                  <p className="text-sm text-noir-mauve">
+                    Email{" "}
+                    <a
+                      href={`mailto:${featuredEvent.rsvpEmail}`}
+                      className="text-noir-olive font-medium hover:underline"
+                    >
+                      {featuredEvent.rsvpEmail}
+                    </a>{" "}
+                    - Space is limited.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Event Categories - with opacity to show they're placeholders */}
         <div className="opacity-60">

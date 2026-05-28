@@ -75,11 +75,11 @@ export default function About() {
           <div className="relative">
             <div className="relative z-10">
               <Image
-                src="/placeholder.svg?height=600&width=500"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Annita%20Potrait%203.JPG-Xqb5hWEZCA3YDTX3t5tgCETVkOB0EH.jpeg"
                 alt="Annita Taylor, NP - Founder of Noir Well Health"
                 width={500}
                 height={600}
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-2xl object-cover"
               />
             </div>
 
