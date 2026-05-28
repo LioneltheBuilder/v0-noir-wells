@@ -75,7 +75,7 @@ export default function About() {
           <div className="relative">
             <div className="relative z-10">
               <Image
-                src="/images/anita-taylor.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Annita%20Potrait%203.JPG-Xqb5hWEZCA3YDTX3t5tgCETVkOB0EH.jpeg"
                 alt="Annita Taylor, NP - Founder of Noir Well Health"
                 width={500}
                 height={600}
