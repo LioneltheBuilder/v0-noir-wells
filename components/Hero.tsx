@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Heart, Stethoscope, Leaf } from "lucide-react"
@@ -16,11 +17,32 @@ export default function Hero({
   subParts = ["More energy.", "Better labs."],
   intro = `Culturally rooted. Clinically sound. Unapologetically aligned. At Noir Well Health, we deliver whole-person care through intentional, high-touch services that are both culturally competent and clinically excellent. We proudly bridge grassroots community care with a luxury-aligned wellness experience — offering care that is not only accessible, but deeply intentional in its design and delivery.`,
 }: HeroProps) {
+  const [topPadding, setTopPadding] = useState(192)
+
+  useEffect(() => {
+    const calculatePadding = () => {
+      const banner = document.querySelector("[data-announcement-banner]")
+      const header = document.querySelector("header")
+
+      const bannerHeight = banner ? banner.getBoundingClientRect().height : 0
+      const headerHeight = header ? header.getBoundingClientRect().height : 80
+
+      setTopPadding(bannerHeight + headerHeight + 24)
+    }
+
+    calculatePadding()
+    const interval = setInterval(calculatePadding, 100)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section
+      style={{ paddingTop: `${topPadding}px` }}
       className="
         relative min-h-screen flex items-center
         bg-gradient-to-br from-noir-cream via-white to-noir-beige
+        transition-all duration-300
       "
     >
       <div className="container-custom">
@@ -28,25 +50,32 @@ export default function Hero({
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-5">
-              <AnimatedHeading text={heading} />
+              <AnimatedHeading text={heading} className="text-4xl md:text-5xl lg:text-6xl" />
 
-              {/* Secondary line: concise brand pillars */}
-              <div className="flex items-center flex-wrap gap-3 text-2xl md:text-3xl text-noir-olive font-medium">
-                {subParts.map((p, i) => (
-                  <span key={i} className="hover:text-noir-brown transition-colors">
-                    {p}
-                  </span>
-                ))}
+              {/* Trust Indicators */}
+              <div className="flex items-center space-x-8 pt-8 border-t border-noir-cream">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-noir-brown">500+</div>
+                  <div className="text-sm text-noir-mauve">Patients Served</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-noir-brown">15+</div>
+                  <div className="text-sm text-noir-mauve">Years Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-noir-brown">98%</div>
+                  <div className="text-sm text-noir-mauve">Satisfaction Rate</div>
+                </div>
               </div>
             </div>
 
-            <p className="text-xl text-noir-mauve leading-relaxed max-w-2xl">{intro}</p>
+            <p className="text-base md:text-lg text-noir-mauve leading-relaxed max-w-2xl">{intro}</p>
 
             {/* Split CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/medical"
-                className="group flex items-center justify-center bg-noir-olive text-white px-8 py-4 rounded-full font-medium hover:bg-noir-brown transition-all"
+                className="group flex items-center justify-center bg-noir-olive text-white px-10 py-5 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
               >
                 <Stethoscope className="mr-2 h-5 w-5" />
                 Medical Services
@@ -55,28 +84,12 @@ export default function Hero({
 
               <Link
                 href="/wellness"
-                className="group flex items-center justify-center border-2 border-noir-olive text-noir-olive px-8 py-4 rounded-full font-medium hover:bg-noir-olive hover:text-white transition-all"
+                className="group flex items-center justify-center border-2 border-noir-olive text-noir-olive px-10 py-5 rounded-full font-semibold text-lg hover:bg-noir-olive hover:text-white transition-all"
               >
                 <Leaf className="mr-2 h-5 w-5" />
                 Wellness Services
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex items-center space-x-8 pt-8 border-t border-noir-cream">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-noir-brown">500+</div>
-                <div className="text-sm text-noir-mauve">Patients Served</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-noir-brown">15+</div>
-                <div className="text-sm text-noir-mauve">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-noir-brown">98%</div>
-                <div className="text-sm text-noir-mauve">Satisfaction Rate</div>
-              </div>
             </div>
           </div>
 
