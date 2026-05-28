@@ -24,6 +24,7 @@
 - `docs/development/BRANCHING.md`
 - `docs/development/DEPLOYMENT.md`
 - `docs/development/LLM_GUARDRAILS.md`
+- `docs/development/PROJECT_ONBOARDING_STANDARD.md`
 - `docs/development/RELEASING.md`
 
 ## Cursor

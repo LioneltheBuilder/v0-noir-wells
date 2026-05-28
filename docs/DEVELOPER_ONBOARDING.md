@@ -7,6 +7,7 @@
 3. `docs/DOCUMENTATION_INDEX.md`
 4. `docs/ARCHITECTURE_CONSTITUTION.md`
 5. `docs/contracts/INDEX.md`
+6. `docs/development/PROJECT_ONBOARDING_STANDARD.md`
 
 ## Core commands
 
@@ -31,3 +32,4 @@ pnpm run ci
 - booking points to Zocdoc through site routes
 - membership, events, blog, and partner pages should be treated as marketing content unless code proves otherwise
 - if you add infra, env vars, or external services, update docs in the same batch
+- use the onboarding standard doc when cloning this repo pattern for future client projects
