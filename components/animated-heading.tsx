@@ -11,15 +11,9 @@ type AnimatedHeadingProps = {
  * - Gentle floating and glow pulse (disabled for prefers-reduced-motion)
  * - Underline expands on hover for an interactive but minimal effect
  */
-export default function AnimatedHeading({
-  text = "A Unified Care Experience",
-  className = "",
-}: AnimatedHeadingProps) {
+export default function AnimatedHeading({ text = "A Unified Care Experience", className = "" }: AnimatedHeadingProps) {
   return (
-    <div
-      className={`group relative inline-block ${className}`}
-      aria-label="A Unified Care Experience"
-    >
+    <div className={`group relative inline-block ${className}`} aria-label="A Unified Care Experience">
       {/* Backlit glow (behind the text) */}
       <div
         aria-hidden="true"
@@ -36,7 +30,7 @@ export default function AnimatedHeading({
       <h1
         className="
           text-noir-brown font-bold tracking-tight
-          text-5xl md:text-6xl lg:text-7xl leading-tight
+          text-4xl md:text-5xl lg:text-6xl leading-tight
           transition-transform duration-500
           motion-safe:animate-nw-glow motion-safe:group-hover:translate-y-[-2px]
           motion-safe:animate-nw-float

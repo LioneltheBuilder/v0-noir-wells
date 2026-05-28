@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown } from "lucide-react"
 
 function classNames(...classes: (string | false | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -14,6 +14,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [bannerHeight, setBannerHeight] = useState(84)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -23,7 +24,23 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Concise labels for improved readability
+  useEffect(() => {
+    // Watch for banner height changes
+    const checkBannerHeight = () => {
+      const banner = document.querySelector("[data-announcement-banner]")
+      if (banner) {
+        setBannerHeight(banner.getBoundingClientRect().height)
+      } else {
+        setBannerHeight(0)
+      }
+    }
+
+    checkBannerHeight()
+    const interval = setInterval(checkBannerHeight, 100)
+
+    return () => clearInterval(interval)
+  }, [])
+
   const nav = [
     { name: "Home", href: "/" },
     {
@@ -41,7 +58,7 @@ export default function Header() {
       href: "/medical",
       children: [
         { name: "Primary Care", href: "/medical/primary-care" },
-        { name: "Women’s Health", href: "/medical/womens-health" },
+        { name: "Women's Health", href: "/medical/womens-health" },
         { name: "Behavioral", href: "/medical/behavioral-health" },
       ],
     },
@@ -63,18 +80,18 @@ export default function Header() {
   return (
     <header
       role="banner"
+      style={{ top: `${bannerHeight}px` }}
       className={classNames(
-        // Subtle, striking band: warm cream to beige gradient
-        "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300",
+        "fixed inset-x-0 z-50 border-b transition-all duration-300",
         "bg-[linear-gradient(to_right,_#EADEC6_0%,_#FFFFFF_40%,_#CEC4A0_100%)]",
-        scrolled ? "border-noir-beige/70 shadow-lg" : "border-noir-cream"
+        scrolled ? "border-noir-beige/70 shadow-lg" : "border-noir-cream",
       )}
     >
       <nav className={classNames("container-custom", "supports-[backdrop-filter]:backdrop-blur-md")} aria-label="Main">
         <div
           className={classNames(
             "flex items-center justify-between transition-all duration-300",
-            scrolled ? "h-16" : "h-20"
+            scrolled ? "h-16" : "h-20",
           )}
         >
           {/* Brand */}
@@ -87,7 +104,6 @@ export default function Header() {
               className="h-10 w-auto md:h-12"
               priority
             />
-            {/* Discreet subtitle on large screens */}
             <span className="hidden xl:block leading-tight text-noir-brown">
               <span className="block text-sm tracking-wide">healthcare. wellness. lifestyle.</span>
             </span>
@@ -96,9 +112,7 @@ export default function Header() {
           {/* Desktop Nav */}
           <div className="hidden 2xl:flex items-center gap-7">
             {nav.map((item) => {
-              const active =
-                pathname === item.href ||
-                (item.href === "/about" && pathname.startsWith("/about"))
+              const active = pathname === item.href || (item.href === "/about" && pathname.startsWith("/about"))
               return (
                 <div
                   key={item.name}
@@ -110,13 +124,15 @@ export default function Header() {
                     href={item.href}
                     className={classNames(
                       "whitespace-nowrap text-[15px] font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-noir-olive/40 rounded-md px-1 py-1",
-                      active ? "text-noir-olive" : "text-noir-brown hover:text-noir-olive"
+                      active ? "text-noir-olive" : "text-noir-brown hover:text-noir-olive",
                     )}
                     aria-haspopup={item.children ? "menu" : undefined}
                     aria-expanded={openDropdown === item.name}
                   >
                     <span className="align-middle">{item.name}</span>
-                    {item.children && <ChevronDown className="ml-1 inline-block h-4 w-4 align-middle" aria-hidden="true" />}
+                    {item.children && (
+                      <ChevronDown className="ml-1 inline-block h-4 w-4 align-middle" aria-hidden="true" />
+                    )}
                   </Link>
 
                   {item.children && openDropdown === item.name && (
@@ -147,7 +163,7 @@ export default function Header() {
               href="/book"
               className={classNames(
                 "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors",
-                "bg-noir-olive text-white hover:bg-noir-brown"
+                "bg-noir-olive text-white hover:bg-noir-brown",
               )}
               aria-label="Book appointment on ZocDoc"
             >
@@ -177,7 +193,7 @@ export default function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className={classNames(
                       "block px-1 py-2 text-base font-medium",
-                      pathname === item.href ? "text-noir-olive" : "text-noir-brown hover:text-noir-olive"
+                      pathname === item.href ? "text-noir-olive" : "text-noir-brown hover:text-noir-olive",
                     )}
                   >
                     {item.name}
