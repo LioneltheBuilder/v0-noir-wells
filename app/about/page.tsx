@@ -17,7 +17,7 @@ export default function UnifiedAboutPage() {
     {
       name: "Annita Taylor, NP",
       role: "Founder, Nurse Practitioner",
-      img: "/images/team-portrait.png",
+      img: "/images/anita-taylor.png",
       bio: "Certified & Licensed Nurse Practitioner with a Master's in Adult Health. Currently pursuing Integrative Health certification to bridge clinical excellence with culturally rooted wellness.",
     },
     {
