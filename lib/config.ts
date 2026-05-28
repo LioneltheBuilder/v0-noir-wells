@@ -1,4 +1,4 @@
-export const zocdocLink = "https://www.zocdoc.com/practice/noir-well-health" // TODO: replace with your real ZocDoc URL
+export const zocdocLink = "https://www.zocdoc.com/practice/noir-well-adult-health-n-p-176465?lock=true&component=CreateUser&referrerType=RegistrationPage&SocialSignOn=true"
 
 export const contact = {
   phone: "(718) 316-5444",
