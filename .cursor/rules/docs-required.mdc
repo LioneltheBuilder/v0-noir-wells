@@ -1,0 +1,12 @@
+---
+description: Require doc updates when architecture or behavior changes
+alwaysApply: true
+---
+
+# Docs required
+
+When changing architecture, content ownership, deployment assumptions, or user-visible behavior:
+
+- update the relevant contract doc
+- update `docs/WORK_ORDER.md` if priorities change
+- update `README.md` or onboarding docs if repo reality changes

@@ -80,7 +80,7 @@ export default function UnifiedAboutPage() {
                 Primary Care
               </span>
               <span className="inline-flex items-center rounded-full bg-noir-olive/10 text-noir-olive px-4 py-1.5 text-sm font-medium">
-                Women's Health
+                Women&apos;s Health
               </span>
               <span className="inline-flex items-center rounded-full bg-noir-olive/10 text-noir-olive px-4 py-1.5 text-sm font-medium">
                 Behavioral Health
@@ -240,7 +240,7 @@ export default function UnifiedAboutPage() {
           <div className="text-white">
             <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>
             <p className="mt-3 text-white/90">
-              We don't collect PHI on this site. For appointments, please use ZocDoc. For general questions, reach us by
+              We don&apos;t collect PHI on this site. For appointments, please use ZocDoc. For general questions, reach us by
               phone or email.
             </p>
 

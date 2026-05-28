@@ -63,7 +63,7 @@ export default function About() {
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-noir-olive rounded-full mr-4"></div>
-                <span className="text-noir-brown">Master's in Adult Health</span>
+                <span className="text-noir-brown">Master&apos;s in Adult Health</span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-noir-olive rounded-full mr-4"></div>

@@ -63,7 +63,7 @@ export default function MembershipComingSoon() {
 
           {/* Description - DECREASED SIZE */}
           <p className="text-base text-noir-mauve max-w-2xl mx-auto leading-relaxed">
-            The details you see below are placeholders to give you a glimpse of what's ahead.
+            The details you see below are placeholders to give you a glimpse of what&apos;s ahead.
           </p>
         </div>
 
@@ -154,9 +154,9 @@ export default function MembershipComingSoon() {
         ) : (
           <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/70 text-center shadow-lg">
             <CheckCircle className="h-14 w-14 text-noir-olive mx-auto mb-4" />
-            <h4 className="text-xl font-semibold text-noir-brown mb-3">You're on our VIP list!</h4>
+            <h4 className="text-xl font-semibold text-noir-brown mb-3">You&apos;re on our VIP list!</h4>
             <p className="text-noir-mauve text-sm">
-              We'll notify you first when memberships launch, plus you'll get exclusive early access pricing.
+              We&apos;ll notify you first when memberships launch, plus you&apos;ll get exclusive early access pricing.
             </p>
           </div>
         )}

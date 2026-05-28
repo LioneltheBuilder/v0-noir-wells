@@ -1,12 +1,20 @@
 {
-  "name": "my-v0-project",
+  "name": "v0-noir-wells",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "description": "Noir Well Health public website",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint .",
-    "start": "next start"
+    "lint": "next lint",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test",
+    "ci": "pnpm typecheck && pnpm test && pnpm lint && pnpm build"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -69,6 +77,8 @@
     "@types/papaparse": "^5.3.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.25",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"

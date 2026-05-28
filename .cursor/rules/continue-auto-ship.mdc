@@ -1,0 +1,15 @@
+---
+description: Auto-handoff from /continue to /release when a coherent batch is ready
+alwaysApply: true
+---
+
+# Continue -> release handoff
+
+When using `/continue`, do not loop forever once the batch is coherent.
+
+Hand off to `/release` when:
+
+- the dirty set belongs to one workstream
+- docs are updated for that work
+- local verification is good enough for the repo's current tooling
+- no higher-value local implementation step remains

@@ -59,7 +59,7 @@ export default function EventsComingSoon() {
             Stay Tuned: Our Events Section is Coming Soon!
           </h3>
           <p className="text-lg md:text-xl text-noir-mauve max-w-3xl mx-auto leading-relaxed">
-            The events you see now are just placeholders to give you a glimpse of what's to come. We're crafting
+            The events you see now are just placeholders to give you a glimpse of what&apos;s to come. We&apos;re crafting
             meaningful workshops, wellness retreats, and community gatherings designed to support your health journey.
           </p>
         </div>
@@ -120,8 +120,8 @@ export default function EventsComingSoon() {
         ) : (
           <div className="max-w-md mx-auto bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-white/60 text-center">
             <CheckCircle className="h-10 w-10 text-noir-olive mx-auto mb-3" />
-            <h4 className="text-lg font-semibold text-noir-brown mb-2">You're on our events list!</h4>
-            <p className="text-noir-mauve text-sm">We'll let you know as soon as our community events are ready.</p>
+            <h4 className="text-lg font-semibold text-noir-brown mb-2">You&apos;re on our events list!</h4>
+            <p className="text-noir-mauve text-sm">We&apos;ll let you know as soon as our community events are ready.</p>
           </div>
         )}
 

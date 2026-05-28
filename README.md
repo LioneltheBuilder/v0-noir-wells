@@ -1,30 +1,55 @@
-# Noir well branding guide
+# Noir Well Health
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Public website for Noir Well Health, built with Next.js App Router and Tailwind CSS.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/lionel-the-builders-projects/v0-noir-wells)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/g9ojhVpZl1C)
+## What this repo is
 
-## Overview
+- a marketing and information site for Noir Well Health
+- a static-first App Router codebase with shared section components
+- a repo now set up with docs, Cursor conventions, CI, and a `main` / `develop` workflow
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## What this repo is not
 
-## Deployment
+- not a practice-management backend
+- not a custom appointment-booking system
+- not a CMS-backed healthcare platform
 
-Your project is live at:
+Current booking traffic is routed to Zocdoc from site-controlled pages.
 
-**[https://vercel.com/lionel-the-builders-projects/v0-noir-wells](https://vercel.com/lionel-the-builders-projects/v0-noir-wells)**
+## Quick start
 
-## Build your app
+```bash
+pnpm install
+pnpm dev
+```
 
-Continue building your app on:
+## Verification
 
-**[https://v0.app/chat/g9ojhVpZl1C](https://v0.app/chat/g9ojhVpZl1C)**
+```bash
+pnpm run ci
+```
 
-## How It Works
+Or run checks individually:
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+```bash
+pnpm typecheck
+pnpm test
+pnpm lint
+pnpm build
+```
+
+## Repo structure
+
+- `app/`: route entry points
+- `components/`: homepage and shared UI sections
+- `lib/`: business config and helper logic
+- `public/`: site assets
+- `.cursor/`: repo-specific agent workflows
+- `docs/`: architecture, contracts, setup, and release notes
+
+## Workflow
+
+- `main`: production-ready branch
+- `develop`: integration branch
+
+See [SETUP.md](./SETUP.md), [AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md), and [docs/DOCUMENTATION_INDEX.md](./docs/DOCUMENTATION_INDEX.md).

@@ -1,0 +1,12 @@
+---
+description: Keep marketing claims aligned with shipped behavior
+alwaysApply: true
+---
+
+# Public-site truth
+
+For public pages and marketing copy:
+
+- do not present placeholders as live production integrations
+- do not imply healthcare workflows that the site does not actually support
+- keep booking, membership, events, blog, and partner messaging aligned with live routes and current content

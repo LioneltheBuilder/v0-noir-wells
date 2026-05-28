@@ -119,8 +119,8 @@ export default function MembershipAnnouncement() {
             ) : (
               <div className="max-w-md mx-auto bg-white/20 backdrop-blur-sm rounded-2xl p-6">
                 <CheckCircle className="h-12 w-12 text-white mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">You're on the list!</h3>
-                <p className="text-white/80">We'll notify you as soon as membership services are available.</p>
+                <h3 className="text-xl font-semibold text-white mb-2">You&apos;re on the list!</h3>
+                <p className="text-white/80">We&apos;ll notify you as soon as membership services are available.</p>
               </div>
             )}
           </div>

@@ -39,7 +39,7 @@ export default function OpenAnnouncementBanner() {
                 <div className="relative bg-gradient-to-br from-noir-cream to-noir-beige text-noir-brown px-4 md:px-6 py-2 md:py-2.5 rounded-full font-black text-base md:text-xl shadow-2xl border-2 border-white/50">
                   <span className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></span>
-                    WE'RE OPEN
+                    WE&apos;RE OPEN
                   </span>
                 </div>
               </div>
