@@ -4,6 +4,8 @@
 
 `v0-noir-wells` is the Noir Well Health public website. Right now it is a content-driven marketing site built in Next.js App Router with mostly static routes and section components.
 
+This is the canonical Noir Well Health repo inside the Digital Builders project gateway.
+
 ## What to read first
 
 1. `README.md`
@@ -11,6 +13,7 @@
 3. `docs/ARCHITECTURE_CONSTITUTION.md`
 4. `docs/contracts/INDEX.md`
 5. `.cursor/skills/v0-noir-wells/SKILL.md`
+6. `docs/development/PROJECT_ONBOARDING_STANDARD.md`
 
 ## Current truth
 
@@ -26,3 +29,4 @@
 - keep batches focused
 - run `pnpm run ci` before shipping when possible
 - update docs when behavior, routing, or deployment assumptions change
+- use `docs/development/PROJECT_ONBOARDING_STANDARD.md` when auditing repo setup or onboarding a comparable client repo

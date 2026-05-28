@@ -52,4 +52,10 @@ pnpm build
 - `main`: production-ready branch
 - `develop`: integration branch
 
+## Onboarding standard
+
+This repo is the canonical Noir Well Health project repo inside the Digital Builders project gateway.
+
+Use [docs/development/PROJECT_ONBOARDING_STANDARD.md](./docs/development/PROJECT_ONBOARDING_STANDARD.md) for the repeatable onboarding and GitHub/Vercel setup standard.
+
 See [SETUP.md](./SETUP.md), [AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md), and [docs/DOCUMENTATION_INDEX.md](./docs/DOCUMENTATION_INDEX.md).

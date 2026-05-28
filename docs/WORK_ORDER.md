@@ -3,8 +3,9 @@
 ## Current priority stack
 
 1. stabilize repo operations and CI/CD
-2. keep public content honest and aligned with live routes
-3. tighten media, accessibility, and performance as follow-on work
+2. lock in the repeatable onboarding standard for future client repos
+3. keep public content honest and aligned with live routes
+4. tighten media, accessibility, and performance as follow-on work
 
 ## Known debt
 

@@ -11,6 +11,7 @@ Read `../skills/v0-noir-wells/SKILL.md` first.
 - `verify.md`: run validation and report failures
 - `docs-sync.md`: documentation hygiene pass
 - `release.md`: prep a clean handoff or ship batch
+- `onboarding-standard.md`: audit or bootstrap the repo using the standard onboarding flow
 
 ## Repo-specific warning
 
