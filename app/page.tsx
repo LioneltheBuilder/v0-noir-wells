@@ -7,6 +7,7 @@ import Events from "@/components/Events"
 import About from "@/components/About"
 import Footer from "@/components/Footer"
 import MembershipBanner from "@/components/MembershipBanner"
+import Link from "next/link"
 
 export default async function Home() {
   // New, sales-focused messaging:
@@ -33,12 +34,12 @@ export default async function Home() {
             <p className="text-white/90 max-w-2xl mx-auto">
               We use ZocDoc for secure appointment booking. No forms are collected on our site.
             </p>
-            <a
+            <Link
               href="/book"
               className="inline-block bg-white text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-cream"
             >
               Book on ZocDoc
-            </a>
+            </Link>
           </div>
         </section>
       </main>

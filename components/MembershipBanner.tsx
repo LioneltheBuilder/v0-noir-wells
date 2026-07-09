@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { X, Sparkles, ArrowRight } from "lucide-react"
 
@@ -19,13 +20,13 @@ export default function MembershipBanner() {
                 Exciting News: Membership Services Launching Soon!
               </span>
             </div>
-            <a
-              href="#membership-announcement"
+            <Link
+              href="/membership"
               className="hidden sm:inline-flex items-center gap-1 text-sm text-white/90 hover:text-white transition-colors"
             >
               Learn More
               <ArrowRight className="h-3 w-3" />
-            </a>
+            </Link>
           </div>
 
           <button

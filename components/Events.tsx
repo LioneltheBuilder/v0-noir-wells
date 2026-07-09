@@ -1,10 +1,30 @@
 "use client"
 
+import type React from "react"
+import { useState } from "react"
 import Image from "next/image"
-import { Calendar, Clock, MapPin, Users, ArrowRight, Mail } from "lucide-react"
+import Link from "next/link"
+import { Calendar, Clock, MapPin, Users, ArrowRight, Mail, CheckCircle } from "lucide-react"
 import EventsComingSoon from "./EventsComingSoon"
 
 export default function Events() {
+  const [email, setEmail] = useState("")
+  const [newsletterError, setNewsletterError] = useState("")
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    const trimmed = email.trim()
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setNewsletterError("Please enter a valid email address.")
+      setIsSubmitted(false)
+      return
+    }
+    setNewsletterError("")
+    setIsSubmitted(true)
+    setEmail("")
+  }
+
   // Featured upcoming event
   const featuredEvent = {
     title: "Private After-Work Business Mixer",
@@ -248,15 +268,47 @@ export default function Events() {
             community and never miss an opportunity to grow.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-full text-noir-brown focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button className="bg-white text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-cream transition-colors duration-300">
-              Subscribe
-            </button>
+          {!isSubmitted ? (
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <div className="flex-1">
+                <label htmlFor="events-newsletter" className="sr-only">
+                  Email for newsletter
+                </label>
+                <input
+                  id="events-newsletter"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    if (newsletterError) setNewsletterError("")
+                  }}
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-full text-noir-brown focus:outline-none focus:ring-2 focus:ring-white"
+                />
+                {newsletterError && <p className="mt-2 text-sm text-red-200">{newsletterError}</p>}
+              </div>
+              <button
+                type="submit"
+                className="bg-white text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-cream transition-colors duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          ) : (
+            <div className="max-w-md mx-auto bg-white/10 rounded-2xl p-6">
+              <CheckCircle className="h-10 w-10 text-white mx-auto mb-3" />
+              <p className="text-white font-medium">Thank you for subscribing!</p>
+              <p className="text-white/80 text-sm mt-2">We&apos;ll keep you updated on upcoming events and programs.</p>
+            </div>
+          )}
+
+          <div className="mt-8">
+            <Link
+              href="/events"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-noir-olive transition-all duration-300"
+            >
+              View All Events
+            </Link>
           </div>
         </div>
       </div>

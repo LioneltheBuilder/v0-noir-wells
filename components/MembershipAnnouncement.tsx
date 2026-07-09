@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Users, Heart, Sparkles, Bell, ArrowRight, CheckCircle } from "lucide-react"
 
 export default function MembershipAnnouncement() {
@@ -65,6 +66,14 @@ export default function MembershipAnnouncement() {
               Join our exclusive wellness community and unlock premium benefits, priority access, and personalized care
               experiences designed just for you.
             </p>
+
+            <Link
+              href="/membership"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-full font-medium transition-colors mb-8"
+            >
+              View Membership Plans
+              <ArrowRight className="h-4 w-4" />
+            </Link>
 
             {/* Features preview */}
             <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-3xl mx-auto">
