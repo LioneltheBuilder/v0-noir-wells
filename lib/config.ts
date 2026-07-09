@@ -20,3 +20,10 @@ export const brand = {
   tagline: "A unified care experience: Medical. Wellness. Lifestyle.",
   subtitle: "healthcare. wellness. lifestyle.",
 }
+
+export const social = {
+  facebook: "https://facebook.com/noirwellhealth",
+  instagram: "https://instagram.com/noirwellhealth",
+  twitter: "https://twitter.com/noirwellhealth",
+  linkedin: "https://linkedin.com/company/noirwellhealth",
+}

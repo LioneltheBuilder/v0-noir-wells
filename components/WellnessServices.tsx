@@ -54,6 +54,12 @@ export default function WellnessServices() {
             Holistic wellness services that complement your medical care. Our integrated approach supports your journey
             to optimal health and vitality.
           </p>
+          <Link
+            href="/wellness"
+            className="inline-flex items-center justify-center mt-6 bg-noir-olive text-white px-8 py-3 rounded-full font-medium hover:bg-noir-brown transition-colors duration-300"
+          >
+            View All Wellness Services
+          </Link>
         </div>
 
         {/* Main Services Grid */}
@@ -123,13 +129,13 @@ export default function WellnessServices() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="#events"
+                href="/events"
                 className="bg-noir-olive text-white px-8 py-3 rounded-full font-medium hover:bg-noir-brown transition-colors duration-300"
               >
                 View Upcoming Events
               </Link>
               <Link
-                href="#membership"
+                href="/membership"
                 className="border-2 border-noir-olive text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-olive hover:text-white transition-all duration-300"
               >
                 Join Our Community

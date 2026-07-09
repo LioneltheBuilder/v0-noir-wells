@@ -52,6 +52,12 @@ export default function MedicalServices() {
             Clinical excellence rooted in compassionate, culturally-aware care. Our medical services combine
             evidence-based practice with personalized attention.
           </p>
+          <Link
+            href="/medical"
+            className="inline-flex items-center justify-center mt-6 bg-noir-olive text-white px-8 py-3 rounded-full font-medium hover:bg-noir-brown transition-colors duration-300"
+          >
+            View All Medical Services
+          </Link>
         </div>
 
         {/* Services Grid */}
@@ -100,13 +106,13 @@ export default function MedicalServices() {
 
             <div className="space-y-4">
               <Link
-                href="#membership"
+                href="/membership"
                 className="block bg-white text-noir-olive px-6 py-3 rounded-full font-medium text-center hover:bg-noir-cream transition-colors duration-300"
               >
                 View Membership Options
               </Link>
               <Link
-                href="#booking"
+                href="/book"
                 className="block border-2 border-white text-white px-6 py-3 rounded-full font-medium text-center hover:bg-white hover:text-noir-olive transition-all duration-300"
               >
                 <Calendar className="inline-block mr-2 h-4 w-4" />
