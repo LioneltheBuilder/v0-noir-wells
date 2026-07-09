@@ -30,6 +30,12 @@ export default function MedicalServices() {
       description: "Specialized care for older adults, focusing on healthy aging and quality of life.",
       features: ["Age-related health issues", "Medication optimization", "Fall prevention", "Cognitive assessments"],
     },
+    {
+      icon: Stethoscope,
+      title: "Pediatrics (Coming Soon)",
+      description: "Pediatric primary care services for children and adolescents, launching soon.",
+      features: ["Well-child visits", "Immunizations", "Developmental screenings", "Acute illness care"],
+    },
   ]
 
   return (

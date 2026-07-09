@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, Printer } from 'lucide-react'
 import { contact } from "@/lib/config"
 
 export default function Footer() {
@@ -48,15 +48,22 @@ export default function Footer() {
                   <span className="text-white/80">{contact.phone}</span>
                 </div>
                 <div className="flex items-center">
+                  <Printer className="h-4 w-4 mr-3 text-white/60" />
+                  <span className="text-white/80">{contact.fax}</span>
+                </div>
+                <div className="flex items-center">
                   <Mail className="h-4 w-4 mr-3 text-white/60" />
                   <span className="text-white/80">{contact.email}</span>
                 </div>
                 <div className="flex items-start">
                   <MapPin className="h-4 w-4 mr-3 mt-1 text-white/60" />
                   <span className="text-white/80">
-                    {contact.addressLines[0]}
-                    <br />
-                    {contact.addressLines[1]}
+                    {contact.addressLines.map((line) => (
+                      <span key={line}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </span>
                 </div>
               </div>

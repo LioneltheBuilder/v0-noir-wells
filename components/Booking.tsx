@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, Clock, User, Phone, Mail, MessageSquare } from "lucide-react"
+import { Calendar, Clock, User, Phone, Mail, MessageSquare, Printer } from "lucide-react"
+import { contact } from "@/lib/config"
 
 export default function Booking() {
   const [selectedService, setSelectedService] = useState("")
@@ -183,11 +184,15 @@ export default function Booking() {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Phone className="h-5 w-5 mr-3 text-white/80" />
-                    <span>(757) 555-0123</span>
+                    <span>{contact.phone}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Printer className="h-5 w-5 mr-3 text-white/80" />
+                    <span>{contact.fax}</span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 mr-3 text-white/80" />
-                    <span>appointments@noirwellhealth.com</span>
+                    <span>{contact.email}</span>
                   </div>
                   <div className="flex items-start">
                     <svg className="h-5 w-5 mr-3 mt-1 text-white/80" fill="currentColor" viewBox="0 0 20 20">
@@ -198,9 +203,12 @@ export default function Booking() {
                       />
                     </svg>
                     <span>
-                      123 Wellness Way
-                      <br />
-                      Norfolk, VA 23510
+                      {contact.addressLines.map((line, index) => (
+                        <span key={line}>
+                          {line}
+                          {index < contact.addressLines.length - 1 && <br />}
+                        </span>
+                      ))}
                     </span>
                   </div>
                 </div>
@@ -209,18 +217,12 @@ export default function Booking() {
               <div>
                 <h4 className="text-xl font-semibold mb-3">Office Hours</h4>
                 <div className="space-y-2 text-white/90">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>8:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>9:00 AM - 2:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </div>
+                  {contact.officeHours.map((slot) => (
+                    <div key={slot.days} className="flex justify-between">
+                      <span>{slot.days}</span>
+                      <span>{slot.hours}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
