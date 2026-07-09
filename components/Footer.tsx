@@ -1,9 +1,11 @@
 "use client"
 
+import type React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useState } from "react"
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, Printer } from 'lucide-react'
-import { contact } from "@/lib/config"
+import { contact, social } from "@/lib/config"
 
 export default function Footer() {
   const quickLinks = [
@@ -23,11 +25,28 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Facebook, href: social.facebook, label: "Facebook" },
+    { icon: Instagram, href: social.instagram, label: "Instagram" },
+    { icon: Twitter, href: social.twitter, label: "Twitter" },
+    { icon: Linkedin, href: social.linkedin, label: "LinkedIn" },
   ]
+
+  const [email, setEmail] = useState("")
+  const [newsletterError, setNewsletterError] = useState("")
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false)
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const trimmed = email.trim()
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setNewsletterError("Please enter a valid email address.")
+      setNewsletterSuccess(false)
+      return
+    }
+    setNewsletterError("")
+    setNewsletterSuccess(true)
+    setEmail("")
+  }
 
   return (
     <footer className="bg-noir-brown text-white" role="contentinfo">
@@ -99,16 +118,47 @@ export default function Footer() {
               <h4 className="text-xl font-semibold mb-6">Follow Us</h4>
               <div className="flex space-x-4 mb-6">
                 {socialLinks.map((s) => (
-                  <Link
+                  <a
                     key={s.label}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20"
                     aria-label={s.label}
                   >
                     <s.icon className="h-5 w-5" />
-                  </Link>
+                  </a>
                 ))}
               </div>
+              {!newsletterSuccess ? (
+                <form onSubmit={handleNewsletterSubmit} className="mb-6">
+                  <label htmlFor="footer-newsletter" className="sr-only">
+                    Email for newsletter
+                  </label>
+                  <div className="flex flex-col gap-2">
+                    <input
+                      id="footer-newsletter"
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        if (newsletterError) setNewsletterError("")
+                      }}
+                      placeholder="Subscribe to our newsletter"
+                      className="w-full px-4 py-2 rounded-full text-noir-brown placeholder:text-noir-mauve/70 focus:outline-none focus:ring-2 focus:ring-white/40"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full font-medium transition-colors"
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                  {newsletterError && <p className="mt-2 text-sm text-red-200">{newsletterError}</p>}
+                </form>
+              ) : (
+                <p className="mb-6 text-sm text-white/90">Thank you for subscribing!</p>
+              )}
               <div className="text-sm text-white/70">
                 © {new Date().getFullYear()} Noir Well Health. All rights reserved.
               </div>

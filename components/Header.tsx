@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -16,6 +16,29 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [bannerHeight, setBannerHeight] = useState(84)
   const pathname = usePathname()
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearCloseTimeout = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }, [])
+
+  const openDropdownMenu = useCallback(
+    (name: string) => {
+      clearCloseTimeout()
+      setOpenDropdown(name)
+    },
+    [clearCloseTimeout],
+  )
+
+  const scheduleCloseDropdown = useCallback(() => {
+    clearCloseTimeout()
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null)
+    }, 200)
+  }, [clearCloseTimeout])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -23,6 +46,10 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
+
+  useEffect(() => {
+    return () => clearCloseTimeout()
+  }, [clearCloseTimeout])
 
   useEffect(() => {
     // Watch for banner height changes
@@ -117,8 +144,8 @@ export default function Header() {
                 <div
                   key={item.name}
                   className="relative"
-                  onMouseEnter={() => item.children && setOpenDropdown(item.name)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  onMouseEnter={() => item.children && openDropdownMenu(item.name)}
+                  onMouseLeave={scheduleCloseDropdown}
                 >
                   <Link
                     href={item.href}
@@ -136,20 +163,23 @@ export default function Header() {
                   </Link>
 
                   {item.children && openDropdown === item.name && (
-                    <div
-                      role="menu"
-                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-noir-cream py-2"
-                    >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          role="menuitem"
-                          className="block px-4 py-2 text-noir-brown hover:bg-noir-cream hover:text-noir-olive"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 z-50 w-72 pt-2">
+                      <div
+                        role="menu"
+                        className="bg-white rounded-xl shadow-xl border border-noir-cream py-2"
+                      >
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            role="menuitem"
+                            className="block px-4 py-2 text-noir-brown hover:bg-noir-cream hover:text-noir-olive"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -167,7 +197,7 @@ export default function Header() {
               )}
               aria-label="Book appointment on ZocDoc"
             >
-              Book
+              Book Now
             </Link>
           </div>
 
@@ -222,7 +252,7 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Book appointment on ZocDoc"
               >
-                Book
+                Book Now
               </Link>
             </div>
           </div>
