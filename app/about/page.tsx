@@ -4,7 +4,7 @@ import Footer from "@/components/Footer"
 import Image from "next/image"
 import Link from "next/link"
 import { brand, contact, zocdocLink } from "@/lib/config"
-import { Heart, Users, Handshake, MapPin, Phone, Mail, ExternalLink } from "lucide-react"
+import { Heart, Users, Handshake, MapPin, Phone, Mail, ExternalLink, Printer } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About | Noir Well Health",
@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 export default function UnifiedAboutPage() {
   const team = [
     {
-      name: "Annita Taylor, NP",
+      name: "Annita Taylor-Hall, ANP",
       role: "Founder, Nurse Practitioner",
-      img: "/images/team-portrait.png",
-      bio: "Certified & Licensed Nurse Practitioner with a Master's in Adult Health. Currently pursuing Integrative Health certification to bridge clinical excellence with culturally rooted wellness.",
+      img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Annita%20Potrait%203.JPG-Xqb5hWEZCA3YDTX3t5tgCETVkOB0EH.jpeg",
+      bio: "Licensed Adult Nurse Practitioner. Master's in Adult Health. Integrative Health Certification (In Progress).",
     },
     {
       name: "Alex Johnson, RN",
@@ -39,11 +39,6 @@ export default function UnifiedAboutPage() {
       name: "The Well-Ed Project",
       logo: "/placeholder.svg?height=60&width=200",
       blurb: "Community health outreach, SDOH screenings, and patient navigation.",
-    },
-    {
-      name: "DOE Partnership",
-      logo: "/placeholder.svg?height=60&width=200",
-      blurb: "Workforce development: internships and entry-level job placement.",
     },
     {
       name: "Wellness Collaborators",
@@ -250,14 +245,22 @@ export default function UnifiedAboutPage() {
                 <span>{contact.phone}</span>
               </div>
               <div className="flex items-center">
+                <Printer className="h-5 w-5 mr-3 text-white/80" />
+                <span>{contact.fax}</span>
+              </div>
+              <div className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-white/80" />
                 <span>{contact.email}</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 mt-1 text-white/80" />
                 <span>
-                  {contact.addressLines[0]} <br />
-                  {contact.addressLines[1]}
+                  {contact.addressLines.map((line) => (
+                    <span key={line}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </span>
               </div>
             </div>

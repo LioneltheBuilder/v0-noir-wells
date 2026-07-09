@@ -52,13 +52,13 @@ export default function OpenAnnouncementBanner() {
                 <div className="flex items-center gap-2 font-bold text-base">
                   <MapPin className="h-5 w-5 text-noir-cream flex-shrink-0" />
                   <span>
-                    {contact.addressLines[0]}, {contact.addressLines[1]}
+                    {contact.addressLines.join(", ")}
                   </span>
                 </div>
                 <div className="flex items-center gap-5 text-sm text-white/95 font-medium">
                   <span className="flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-noir-beige" />
-                    Mon-Fri: 8AM-6PM • Sat: 9AM-2PM
+                    {contact.officeHoursShort}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Phone className="h-4 w-4 text-noir-beige" />
@@ -98,15 +98,18 @@ export default function OpenAnnouncementBanner() {
             <div className="flex items-start gap-2 text-sm font-medium">
               <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-noir-cream" />
               <span>
-                {contact.addressLines[0]}
-                <br />
-                {contact.addressLines[1]}
+                {contact.addressLines.map((line) => (
+                  <span key={line}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-white/95">
               <span className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5 text-noir-beige" />
-                Mon-Fri: 8AM-6PM • Sat: 9AM-2PM
+                {contact.officeHoursShort}
               </span>
               <span className="flex items-center gap-1.5">
                 <Phone className="h-3.5 w-3.5 text-noir-beige" />

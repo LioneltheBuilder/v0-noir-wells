@@ -59,7 +59,7 @@ export default function Header() {
       children: [
         { name: "Primary Care", href: "/medical/primary-care" },
         { name: "Women's Health", href: "/medical/womens-health" },
-        { name: "Behavioral", href: "/medical/behavioral-health" },
+        { name: "Behavioral Health", href: "/medical/behavioral-health" },
       ],
     },
     {
@@ -68,7 +68,7 @@ export default function Header() {
       children: [
         { name: "Nutrition", href: "/wellness/nutrition" },
         { name: "IV Therapy", href: "/wellness/iv-therapy" },
-        { name: "Training", href: "/wellness/training" },
+        { name: "Personal Training & Movement", href: "/wellness/training" },
         { name: "Financial", href: "/wellness/financial-planning" },
       ],
     },

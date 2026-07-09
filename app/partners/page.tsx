@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
 const partners = [
   { name: "Well-Ed Project", logo: "/placeholder.svg?height=60&width=180" },
-  { name: "DOE Partnership", logo: "/placeholder.svg?height=60&width=180" },
 ]
 
 export default function PartnersPage() {
