@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const pages = [
   { name: "Nutrition Counseling", href: "/wellness/nutrition", desc: "PCOS/insulin resistance focus, anti-inflammatory diets, weight management." },
   { name: "IV Therapy & Hydration", href: "/wellness/iv-therapy", desc: "Energy boost, immunity, hydration & detox packages." },
-  { name: "Personal Training", href: "/wellness/training", desc: "Fitness planning, lifestyle & habit coaching, certified referrals." },
+  { name: "Personal Training & Movement", href: "/wellness/training", desc: "Fitness planning, lifestyle & habit coaching, certified referrals." },
   { name: "Financial Planning", href: "/wellness/financial-planning", desc: "Trusted advisors for overall financial wellness." },
 ]
 

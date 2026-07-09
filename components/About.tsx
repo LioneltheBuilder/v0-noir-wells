@@ -34,10 +34,14 @@ export default function About() {
     { number: "24/7", label: "Member Support" },
   ]
 
+  const credentials = [
+    "Licensed Adult Nurse Practitioner",
+    "Master's in Adult Health",
+    "Integrative Health Certification (In Progress)",
+  ]
+
   const professionalHighlights = [
     "Founder & Medical Director, Noir Well Adult Health NP, P.C.",
-    "Licensed Adult Nurse Practitioner",
-    "MBA & Master of Science in Nursing",
     "Healthcare Executive",
     "Published Author",
     "15+ Years of Healthcare Experience",
@@ -49,7 +53,6 @@ export default function About() {
     "Two-Time Schneps Media Award Recipient",
     "Brooklyn Chamber of Commerce / Fiserv / Clover Small Business Award Recipient",
     "Recipient of New York State Senate and New York City Council Citations",
-    "Integrative Health Certification (In Progress)"
   ]
 
   const teamMembers = [
@@ -72,7 +75,7 @@ export default function About() {
           <div className="space-y-6">
             <div>
               <span className="text-noir-olive font-medium uppercase tracking-wide">Leadership</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-noir-brown mt-2 mb-2">Annita Taylor-Hall, MBA, MSN, APRN, ANP</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-noir-brown mt-2 mb-2">Annita Taylor-Hall, ANP</h2>
               <h3 className="text-2xl font-semibold text-noir-olive mb-6">Founder & Medical Director</h3>
             </div>
 
@@ -89,6 +92,16 @@ export default function About() {
             </p>
 
             <div className="pt-4">
+              <h4 className="text-xl font-bold text-noir-brown mb-4">Credentials</h4>
+              <div className="space-y-3 mb-8">
+                {credentials.map((credential, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="w-2 h-2 bg-noir-olive rounded-full mr-4 mt-2 shrink-0"></div>
+                    <span className="text-noir-brown">{credential}</span>
+                  </div>
+                ))}
+              </div>
+
               <h4 className="text-xl font-bold text-noir-brown mb-4">Professional Highlights</h4>
               <div className="space-y-3">
                 {professionalHighlights.map((highlight, index) => (

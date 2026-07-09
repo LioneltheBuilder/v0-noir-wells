@@ -12,6 +12,7 @@ const pages = [
   { name: "Primary Care", href: "/medical/primary-care", desc: "Chronic disease management, preventive screenings, sick visits, medication management." },
   { name: "Women’s Health", href: "/medical/womens-health", desc: "Pap smears, postpartum care, menstrual health & PCOS support, hormone testing & menopause." },
   { name: "Behavioral Health", href: "/medical/behavioral-health", desc: "Screening for stress, anxiety, depression; referrals; mind-body wellness planning." },
+  { name: "Pediatrics (Coming Soon)", desc: "Pediatric primary care for children and adolescents — launching soon." },
 ]
 
 export default function MedicalPage() {
@@ -25,7 +26,11 @@ export default function MedicalPage() {
             {pages.map((p) => (
               <li key={p.name} className="bg-noir-cream/40 border border-noir-beige/60 p-6 rounded-xl">
                 <h2 className="text-2xl font-semibold text-noir-brown">
-                  <Link href={p.href} className="hover:text-noir-olive">{p.name}</Link>
+                  {p.href ? (
+                    <Link href={p.href} className="hover:text-noir-olive">{p.name}</Link>
+                  ) : (
+                    p.name
+                  )}
                 </h2>
                 <p className="text-noir-mauve">{p.desc}</p>
               </li>

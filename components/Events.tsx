@@ -10,7 +10,7 @@ export default function Events() {
     title: "Private After-Work Business Mixer",
     date: "Thursday, June 18, 2025",
     time: "6:00 PM - 8:00 PM",
-    location: "Noir Well Health, 412 Evergreen Avenue, First Floor, Brooklyn, NY 11221",
+    location: "Noir Well Health, 412 Evergreen Avenue, Floor 1 (Menahan Street Entrance), Brooklyn, NY 11221",
     description:
       "Join us for an exclusive after-work mixer for business owners to learn about the Essential Plan 200-250 Elimination and what it means for you as an employer and for your employees. Enjoy one-to-one conversations with financial planners, advisors, and experts at this event.",
     speakers: [

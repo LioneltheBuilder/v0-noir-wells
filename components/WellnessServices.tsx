@@ -16,7 +16,7 @@ export default function WellnessServices() {
       icon: Dumbbell,
       title: "Personal Training & Movement",
       description: "Tailored fitness programs designed to meet your individual goals and abilities.",
-      type: "In-House & Partners",
+      type: "Certified Partners",
       features: ["One-on-one training", "Group fitness classes", "Movement therapy", "Injury prevention"],
     },
     {

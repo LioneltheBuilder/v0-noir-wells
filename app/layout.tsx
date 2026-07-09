@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "Medical. Wellness. Lifestyle. Culturally rooted, community-centered healthcare combining clinical excellence with holistic wellness.",
   keywords:
-    "healthcare, wellness, medical services, nutrition, IV therapy, primary care, women's health, behavioral health, Norfolk",
+    "healthcare, wellness, medical services, nutrition, IV therapy, primary care, women's health, behavioral health, Brooklyn",
   metadataBase: new URL("https://www.noirwellhealth.com"),
     generator: 'v0.app'
 }
