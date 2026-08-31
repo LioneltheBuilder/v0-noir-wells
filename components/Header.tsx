@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown } from "lucide-react"
+import { zocdocLink } from "@/lib/config"
 
 function classNames(...classes: (string | false | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -17,6 +18,8 @@ export default function Header() {
   const [bannerHeight, setBannerHeight] = useState(84)
   const pathname = usePathname()
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const wasMenuOpenRef = useRef(false)
 
   const clearCloseTimeout = useCallback(() => {
     if (closeTimeoutRef.current) {
@@ -52,21 +55,46 @@ export default function Header() {
   }, [clearCloseTimeout])
 
   useEffect(() => {
-    // Watch for banner height changes
-    const checkBannerHeight = () => {
-      const banner = document.querySelector("[data-announcement-banner]")
-      if (banner) {
-        setBannerHeight(banner.getBoundingClientRect().height)
-      } else {
-        setBannerHeight(0)
-      }
+    const banner = document.querySelector("[data-announcement-banner]")
+    const updateBannerHeight = () => {
+      const nextHeight = banner?.getBoundingClientRect().height ?? 0
+      setBannerHeight(nextHeight)
+      document.documentElement.style.setProperty("--banner-height", `${nextHeight}px`)
     }
 
-    checkBannerHeight()
-    const interval = setInterval(checkBannerHeight, 100)
+    updateBannerHeight()
+    const observer = new ResizeObserver(updateBannerHeight)
+    if (banner) observer.observe(banner)
 
-    return () => clearInterval(interval)
+    return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    if (wasMenuOpenRef.current && !isMenuOpen) menuButtonRef.current?.focus()
+    wasMenuOpenRef.current = isMenuOpen
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+    setOpenDropdown(null)
+  }, [pathname])
 
   const nav = [
     { name: "Home", href: "/" },
@@ -190,7 +218,9 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden 2xl:flex">
             <Link
-              href="/book"
+              href={zocdocLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className={classNames(
                 "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors",
                 "bg-noir-olive text-white hover:bg-noir-brown",
@@ -203,10 +233,13 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
+            ref={menuButtonRef}
+            type="button"
             onClick={() => setIsMenuOpen((s) => !s)}
             className="2xl:hidden p-2 text-noir-brown hover:text-noir-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-noir-olive/40 rounded-md"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -214,7 +247,10 @@ export default function Header() {
 
         {/* Mobile Nav */}
         {isMenuOpen && (
-          <div className="2xl:hidden py-4 border-t border-noir-cream bg-white/95 backdrop-blur">
+          <div
+            id="mobile-navigation"
+            className="2xl:hidden max-h-[calc(100dvh-var(--banner-height,0px)-4rem)] overflow-y-auto overscroll-contain border-t border-noir-cream bg-white/95 py-4 backdrop-blur"
+          >
             <div className="grid gap-1">
               {nav.map((item) => (
                 <div key={item.name} className="py-1">
@@ -247,8 +283,10 @@ export default function Header() {
             </div>
             <div className="pt-4 border-t border-noir-cream mt-4">
               <Link
-                href="/book"
-                className="btn-primary w-full text-center block"
+                href={zocdocLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary block w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Book appointment on ZocDoc"
               >

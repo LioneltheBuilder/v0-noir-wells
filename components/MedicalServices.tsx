@@ -2,6 +2,7 @@
 
 import { Stethoscope, Heart, Brain, Users, Shield, Calendar } from "lucide-react"
 import Link from "next/link"
+import { zocdocLink } from "@/lib/config"
 
 export default function MedicalServices() {
   const services = [
@@ -111,13 +112,15 @@ export default function MedicalServices() {
               >
                 View Membership Options
               </Link>
-              <Link
-                href="/book"
+              <a
+                href={zocdocLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block border-2 border-white text-white px-6 py-3 rounded-full font-medium text-center hover:bg-white hover:text-noir-olive transition-all duration-300"
               >
                 <Calendar className="inline-block mr-2 h-4 w-4" />
                 Schedule Appointment
-              </Link>
+              </a>
             </div>
           </div>
         </div>

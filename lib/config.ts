@@ -1,4 +1,4 @@
-export const zocdocLink = "https://www.zocdoc.com/practice/noir-well-adult-health-n-p-176465?lock=true&component=CreateUser&referrerType=RegistrationPage&SocialSignOn=true"
+export const zocdocLink = "https://www.zocdoc.com/practice/noir-well-adult-health-n-p-176465?lock=true&isNewPatient=true&referrerType=widget"
 
 export const contact = {
   phone: "(347) 413-5025",
