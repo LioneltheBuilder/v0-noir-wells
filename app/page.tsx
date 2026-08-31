@@ -2,12 +2,9 @@ import Header from "@/components/Header"
 import Hero from "@/components/Hero"
 import MedicalServices from "@/components/MedicalServices"
 import WellnessServices from "@/components/WellnessServices"
-import MembershipAnnouncement from "@/components/MembershipAnnouncement"
-import Events from "@/components/Events"
-import About from "@/components/About"
 import Footer from "@/components/Footer"
 import MembershipBanner from "@/components/MembershipBanner"
-import Link from "next/link"
+import { zocdocLink } from "@/lib/config"
 
 export default async function Home() {
   // New, sales-focused messaging:
@@ -23,23 +20,21 @@ export default async function Home() {
         <Hero heading={heading} subParts={subParts} intro={intro} />
         <MedicalServices />
         <WellnessServices />
-        <div id="membership-announcement">
-          <MembershipAnnouncement />
-        </div>
-        <Events />
-        <About />
+
         <section className="section-padding bg-gradient-to-br from-noir-olive to-noir-brown">
           <div className="container-custom text-center text-white space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold">Ready to book?</h2>
             <p className="text-white/90 max-w-2xl mx-auto">
               We use ZocDoc for secure appointment booking. No forms are collected on our site.
             </p>
-            <Link
-              href="/book"
+            <a
+              href={zocdocLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-white text-noir-olive px-8 py-3 rounded-full font-medium hover:bg-noir-cream"
             >
               Book on ZocDoc
-            </Link>
+            </a>
           </div>
         </section>
       </main>

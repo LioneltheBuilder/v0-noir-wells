@@ -1,7 +1,6 @@
 "use client"
 
 import { Check, Star, Crown, Sparkles } from "lucide-react"
-import MembershipComingSoon from "./MembershipComingSoon"
 
 export default function Membership() {
   const tiers = [
@@ -53,7 +52,6 @@ export default function Membership() {
         "Financial wellness coaching",
         "Exclusive retreat access",
         "VIP event experiences",
-        "24/7 wellness support line",
         "Custom supplement protocols",
       ],
       cta: "Go Elite",
@@ -76,9 +74,6 @@ export default function Membership() {
             health plans.
           </div>
         </div>
-
-        {/* Coming Soon Notice */}
-        <MembershipComingSoon />
 
         {/* Membership Cards - with opacity to show they're placeholders */}
         <div className="opacity-60 relative">

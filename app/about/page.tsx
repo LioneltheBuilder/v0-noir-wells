@@ -117,7 +117,7 @@ export default function UnifiedAboutPage() {
       </section>
 
       {/* WHO WE ARE (anchor target) */}
-      <section id="who-we-are" className="section-padding scroll-mt-28 bg-white">
+      <section id="who-we-are" className="section-padding scroll-mt-[calc(var(--banner-height,0px)+6rem)] bg-white">
         <div className="container-custom grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-7 space-y-5">
             <h2 className="text-3xl md:text-4xl font-bold text-noir-brown">Our Mission</h2>
@@ -154,7 +154,7 @@ export default function UnifiedAboutPage() {
       </section>
 
       {/* TEAM */}
-      <section id="team" className="section-padding scroll-mt-28 bg-gradient-to-br from-noir-cream/50 to-white">
+      <section id="team" className="section-padding scroll-mt-[calc(var(--banner-height,0px)+6rem)] bg-gradient-to-br from-noir-cream/50 to-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-10">
             <div className="inline-flex items-center justify-center gap-2 text-noir-olive font-medium uppercase tracking-wide">
@@ -187,7 +187,7 @@ export default function UnifiedAboutPage() {
       </section>
 
       {/* PARTNERS */}
-      <section id="partners" className="section-padding scroll-mt-28 bg-white">
+      <section id="partners" className="section-padding scroll-mt-[calc(var(--banner-height,0px)+6rem)] bg-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-10">
             <div className="inline-flex items-center justify-center gap-2 text-noir-olive font-medium uppercase tracking-wide">
@@ -230,7 +230,7 @@ export default function UnifiedAboutPage() {
       </section>
 
       {/* CONTACT / GET IN TOUCH */}
-      <section id="contact" className="section-padding scroll-mt-28 bg-gradient-to-br from-noir-olive to-noir-brown">
+      <section id="contact" className="section-padding scroll-mt-[calc(var(--banner-height,0px)+6rem)] bg-gradient-to-br from-noir-olive to-noir-brown">
         <div className="container-custom grid lg:grid-cols-2 gap-10 items-center">
           <div className="text-white">
             <h2 className="text-3xl md:text-4xl font-bold">Get in Touch</h2>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { X, MapPin, Clock, Phone } from "lucide-react"
-import { contact } from "@/lib/config"
+import { contact, zocdocLink } from "@/lib/config"
 
 export default function OpenAnnouncementBanner() {
   const [isVisible, setIsVisible] = useState(true)
@@ -35,19 +35,17 @@ export default function OpenAnnouncementBanner() {
             {/* Left: We're Open Badge with Address */}
             <div className="flex items-center gap-3 md:gap-6 flex-1">
               {/* Open Badge */}
-              <Link
-                href="/book"
+              <a
+                href={zocdocLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative flex-shrink-0 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                aria-label="Book an appointment"
+                aria-label="Book an appointment on Zocdoc"
               >
-                <div className="absolute inset-0 bg-noir-cream rounded-full blur-md opacity-50 animate-ping"></div>
-                <div className="relative bg-gradient-to-br from-noir-cream to-noir-beige text-noir-brown px-4 md:px-6 py-2 md:py-2.5 rounded-full font-black text-base md:text-xl shadow-2xl border-2 border-white/50 hover:bg-white transition-colors">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></span>
-                    WE&apos;RE OPEN
-                  </span>
+                <div className="relative rounded-full border-2 border-white/50 bg-gradient-to-br from-noir-cream to-noir-beige px-4 py-2 text-sm font-black text-noir-brown shadow-2xl transition-colors hover:bg-white md:px-6 md:py-2.5 md:text-base">
+                  BOOK A VISIT
                 </div>
-              </Link>
+              </a>
 
               {/* Vertical Divider - Desktop only */}
               <div className="hidden lg:block h-12 w-px bg-white/30"></div>
@@ -87,12 +85,14 @@ export default function OpenAnnouncementBanner() {
 
             {/* Right: CTA + Close */}
             <div className="flex items-center gap-2 md:gap-3">
-              <Link
-                href="/book"
+              <a
+                href={zocdocLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-noir-cream text-noir-brown px-4 md:px-6 py-2 md:py-2.5 rounded-full font-bold text-sm md:text-base hover:bg-white transition-all shadow-lg hover:shadow-xl duration-300"
               >
                 Book Now
-              </Link>
+              </a>
 
               <button
                 onClick={() => setIsVisible(false)}
